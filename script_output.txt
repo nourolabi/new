@@ -1,0 +1,4 @@
+✅ PDF invoice generated successfully: /home/ubuntu/invoice_project/professional_invoice.pdf
+
+🎉 Professional invoice PDF has been created!
+📄 File location: /home/ubuntu/invoice_project/professional_invoice.pdf

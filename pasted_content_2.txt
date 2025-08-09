@@ -1,0 +1,174 @@
+Glanzwerk Rheinland – Autowaschanlage Rechnungssystem
+1) Ziel & Nutzen
+Digitale Lösung zur schnellen, fehlerarmen Erstellung von professionellen PDF‑Rechnungen im originalen Glanzwerk‑Design. Unterstützt Mehrfach‑Leistungen, frei konfigurierbare Preise/Mengen sowie optionale Rabatte. Einsatz im Tagesgeschäft der Autowaschanlage Glanzwerk Rheinland (Neuwied).
+
+2) Nutzer & Sprache
+Nutzer: Empfang/Service, Inhaber/Backoffice
+
+Sprache: Deutsch (DE), optional Arabisch (AR) – umschaltbar in der UI. AR mit RTL‑Unterstützung (Rechts‑nach‑Links).
+
+3) Kernfunktionen (Pflichten)
+Rechnungserstellung (PDF)
+
+Kundendaten: Name, KFZ‑Kennzeichen
+
+Mehrfach‑Leistungen pro Rechnung wählbar
+
+Individuelle neue Leistung ad hoc hinzufügen (Freitext + Preis)
+
+Preis & Menge je Position manuell änderbar
+
+Optionaler Rabatt: Prozent oder fester Betrag (nicht an Besuchszahl gekoppelt)
+
+MwSt 19 % automatisch
+
+Zahlungsart auswählbar (Bar / Karte / Überweisung / PayPal)
+
+Automatische Rechnungsnummerierung (Start: 1001, fortlaufend)
+
+Speichern & Drucken (PDF A4)
+
+Design/Branding (verbindlich)
+
+Logo oben wie in der Word‑Vorlage (High‑Res, wird vom Auftraggeber bereitgestellt)
+
+Adresse fix: Krasnaer Str. 1, 56566 Neuwied
+
+Farben, Tabellenstruktur, Typografie: exakt wie die Word‑Rechnung (Layout 1:1)
+
+Kein Entwicklername auf der Rechnung
+
+Leistungskatalog (vorbelegt, editierbar)
+
+Außenreinigung per Hand
+
+Felgenreinigung & Flugrostentfernung
+
+Innenraumreinigung
+
+Lederreinigung & ‑pflege
+
+Lederreparatur
+
+Polster‑ & Teppichreinigung
+
+Scheibenreinigung innen & außen
+
+Lackpolitur & Glanzversiegelung
+
+Nano‑Keramik‑Versiegelung
+
+Motorraumreinigung
+
+Geruchsneutralisierung & Ozonbehandlung
+
+Tierhaarentfernung
+
+Hagelschaden‑ und Dellenentfernung (Ausbeulen ohne Lackieren)
+
+Auto Folieren
+
+Abhol‑ und Bringservice
+
+Kundenhistorie (optional, empfohlen)
+
+Pro Kunde: Liste früherer Rechnungen (Datum, Leistungen, Summe, Zahlart)
+
+Berichte (optional)
+
+Tages-/Monatsumsätze, Top‑Leistungen, Anzahl Rechnungen
+
+4) Technische Umsetzung
+Variante A – Desktop (Windows)
+
+Technologie: Python (GUI), PDF‑Engine fpdf2 (UTF‑8), lokale SQLite‑DB
+
+Auslieferung als Portable .exe (keine Installation nötig)
+
+Speicherpfad PDFs: Rechnungen/…
+
+Variante B – Web (Streamlit)
+
+Frontend/Backend: Streamlit
+
+Hosting: Streamlit Cloud (oder eigener Server)
+
+Quellcode & Assets auf GitHub (öffentlich oder privat)
+
+PDF‑Erzeugung serverseitig (fpdf2)
+(Layout in beiden Varianten identisch zur Word‑Vorlage.)
+
+5) Datenmodell (Kurz)
+customers(id, name, kfz, tel?)
+
+services(id, name, standard_price)
+
+invoices(id, nr, date, customer_id, subtotal, rabatt, mwst, total, zahlart)
+
+invoice_items(id, invoice_id, service_name, qty, unit_price, line_total)
+
+6) Layout‑Spezifikation der Rechnung (verbindlich)
+Kopf: Logo Glanzwerk (High‑Res), Anschrift Krasnaer Str. 1, 56566 Neuwied
+
+Block: Rechnungsnummer, Rechnungsdatum, Fälligkeitsdatum (falls benötigt)
+
+Positionstabelle: Beschreibung | Anzahl/Art | Einzelpreis | MwSt. | Gesamt
+
+Summenbereich: Zwischensumme → Rabatt (optional) → MwSt (19 %) → Gesamt inkl. MwSt
+
+Zahlungsart: Bar / Überweisung / PayPal / Karte
+
+Fußbereich: Kontakt/Bank (falls gewünscht), kein Entwicklerhinweis
+
+Designtreue: Pixelgenau gemäß Word‑Beleg (Farben, Abstände, Linien, Typografie)
+
+7) Bedienablauf (Happy Path)
+Kunde & Kennzeichen eingeben →
+Leistungen aus Liste wählen und/oder neue Leistung erfassen →
+Preis & Menge je Zeile anpassen →
+Rabatt (optional) setzen →
+Zahlart wählen →
+PDF erzeugen (speichern + drucken) →
+Automatische Vergabe neuer Rechnungsnummer
+
+8) Qualität & Abnahme
+Pixelgenaue PDF‑Rechnung gemäß Word‑Vorlage
+
+Korrekte Summenbildung (Mengen/Preise, Rabatt, MwSt 19 %, Gesamt)
+
+Mehrfach‑Leistungen & manuelle Preise funktionieren
+
+PDF speichert zuverlässig, Dateiname z. B. Rechnung_<Kunde>_<YYYY‑MM‑DD>.pdf
+
+Kein Entwicklername auf der Rechnung
+
+9) Sicherheit & Datenschutz
+Lokale Speicherung (Desktop) bzw. Cloud‑Betrieb (Streamlit) nach Absprache
+
+Export/Backup der SQLite‑Datenbank möglich
+
+Minimierung personenbezogener Daten
+
+10) Lieferobjekte
+Ausführbare App (Windows .exe) oder Streamlit‑Webapp (Link)
+
+GitHub‑Repository mit Quellcode, Assets (Logo), README
+
+Installations‑/Nutzungsanleitung (DE, PDF)
+
+Optional: Beispielrechnungen (PDF)
+
+11) Design‑/Branding‑Anforderungen (neu, erweitert)
+Professionelles, farblich konsistentes UI mit künstlerisch‑technischem Charakter (modern, clean)
+
+Deutsch & Arabisch in der Oberfläche (umschaltbar); AR mit RTL‑Layout und sauberer Typografie
+
+Rechnung 1:1 wie die bereitgestellte Word‑Vorlage (Farben, Struktur, Typo, Abstände)
+
+Logo wird vom Auftraggeber bereitgestellt (PNG/SVG, High‑Resolution) und in höchster Qualität eingebunden
+
+System zur Preis‑/Mengenänderung & freie Leistungserfassung direkt im Rechnungsdialog
+
+Rechnungsgenerator auf Pro‑Niveau (Druck‑/Exportqualität)
+
+Hinweis: Die Preise der Dienstleistungen werden initial hinterlegt und sind je Position live editierbar. Neue Leistungen können spontan inkl. Preis/Menge ergänzt werden. Das Rechnungslayout bleibt vollständig identisch zur bereitgestellten Word‑Vorlage von Glanzwerk Rheinland.
